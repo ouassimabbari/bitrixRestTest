@@ -33,6 +33,14 @@ if(!empty($_REQUEST)){
  fwrite($fp, $result->result->TITLE);
  fclose($fp);
 
+ $post = [
+    'title' => $result->result->TITLE
+];
+
+$ch = curl_init('https://192.168.157.132/bitrixOdooMiddleware/');
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+curl_exec($ch);
+curl_close($ch);
 }
 
 ?>
