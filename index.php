@@ -14,7 +14,7 @@ if(!empty($_REQUEST)){
  $queryUrl = 'https://b24-iolu5k.bitrix24.com/rest/1/5u5y5za5ze1mvden/crm.deal.get.json';
  $queryData = http_build_query(array(
  'fields' => array(
- "ID" => $_REQUEST['data']['FIELDS']['ID']
+ "ID" => intval($log)
  ),
  'params' => array("REGISTER_SONET_EVENT" => "Y")
  ));
