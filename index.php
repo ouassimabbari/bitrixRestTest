@@ -6,7 +6,7 @@ echo fread($myfile,filesize("data.txt"));
 fclose($myfile);
 
 if(!empty($_REQUEST)){
- $log = $_REQUEST['event'];
+ $log = $_REQUEST['data']['FIELDS']['ID'];
  $fp = fopen('data.txt', 'a');
  fwrite($fp, $log);
  fclose($fp);
