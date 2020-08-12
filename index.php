@@ -26,9 +26,11 @@ if(!empty($_REQUEST)){
 
  $result = curl_exec($curl);
  curl_close($curl);
+ 
+ $result = json_decode($result);
 
  $fp = fopen('data.txt', 'a');
- fwrite($fp, $result);
+ fwrite($fp, $result['TITLE']);
  fclose($fp);
 
 }
