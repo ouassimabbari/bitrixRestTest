@@ -12,9 +12,7 @@ if(!empty($_REQUEST)){
  fclose($fp);
 
  $queryUrl = 'https://b24-iolu5k.bitrix24.com/rest/1/5u5y5za5ze1mvden/crm.deal.get.json';
- $queryData = http_build_query(array(
- 'id' => intval($log)
- ));
+ $queryData = "id=$log";
 
  $curl = curl_init();
  curl_setopt_array($curl, array(
