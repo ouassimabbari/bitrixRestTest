@@ -30,7 +30,7 @@ if(!empty($_REQUEST)){
  $result = json_decode($result);
 
  $fp = fopen('data.txt', 'a');
- fwrite($fp, $result['result']['TITLE']);
+ fwrite($fp, $result->result->TITLE);
  fclose($fp);
 
 }
