@@ -22,6 +22,12 @@ function writeToLog($data, $title = '') {
  $log .= (strlen($title) > 0 ? $title : 'DEBUG') . "\n";
  $log .= print_r($data, 1);
  $log .= "\n------------------------\n";
+ $log .= "id: ";
+ $log .= $ _REQUEST ['data'] ['FIELDS'] ['ID'];
+ $log .= "id : ";
+ $log .= $ _REQUEST['FIELDS']['ID'];
+ $log .= "event : ";
+ $log .= $ _REQUEST['event'];
  file_put_contents(getcwd() . '/hook.log', $log, FILE_APPEND);
  $fp = fopen('data.txt', 'a');
  fwrite($fp, $log);
