@@ -1,4 +1,5 @@
 <?php
+echo "Hello world";
 
 print_r($_REQUEST);
 writeToLog($_REQUEST, 'incoming');
