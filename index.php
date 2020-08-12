@@ -10,5 +10,31 @@ if(!empty($_REQUEST)){
  $fp = fopen('data.txt', 'a');
  fwrite($fp, $log);
  fclose($fp);
+
+ $queryUrl = 'https://b24-iolu5k.bitrix24.com/rest/1/5u5y5za5ze1mvden/crm.deal.get.json';
+ $queryData = http_build_query(array(
+ 'fields' => array(
+ "ID" => $_REQUEST['data']['FIELDS']['ID']
+ ),
+ 'params' => array("REGISTER_SONET_EVENT" => "Y")
+ ));
+
+ $curl = curl_init();
+ curl_setopt_array($curl, array(
+ CURLOPT_SSL_VERIFYPEER => 0,
+ CURLOPT_POST => 1,
+ CURLOPT_HEADER => 0,
+ CURLOPT_RETURNTRANSFER => 1,
+ CURLOPT_URL => $queryUrl,
+ CURLOPT_POSTFIELDS => $queryData,
+ ));
+
+ $result = curl_exec($curl);
+ curl_close($curl);
+
+ $fp = fopen('data.txt', 'a');
+ fwrite($fp, $result);
+ fclose($fp);
 }
+
 ?>
