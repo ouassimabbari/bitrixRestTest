@@ -6,10 +6,20 @@ fclose($myfile);
 
 if(!empty($_REQUEST)){
  $log = $_REQUEST['data']['FIELDS']['ID'];
- $fp = fopen('data.txt', 'a');
- fwrite($fp, $log);
- fclose($fp);
  file_put_contents('data.txt', print_r($_REQUEST, true));
+ $queryUrl = 'http://34.65.80.46/bitrixOdooMiddleware/index.php';
+ $queryData = "id=$log";
+ $curl = curl_init();
+ curl_setopt_array($curl, array(
+ CURLOPT_SSL_VERIFYPEER => 0,
+ CURLOPT_POST => 1,
+ CURLOPT_HEADER => 0,
+ CURLOPT_RETURNTRANSFER => 1,
+ CURLOPT_URL => $queryUrl,
+ CURLOPT_POSTFIELDS => $queryData,
+ ));
+ curl_exec($curl);
+ curl_close($curl);
 }
 
 ?>
