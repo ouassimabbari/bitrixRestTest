@@ -18,7 +18,8 @@ if(!empty($_REQUEST)){
  CURLOPT_URL => $queryUrl,
  CURLOPT_POSTFIELDS => $queryData,
  ));
- curl_exec($curl);
+ $result = curl_exec($curl);
+ file_put_contents('data.txt', $result);
  curl_close($curl);
 }
 
