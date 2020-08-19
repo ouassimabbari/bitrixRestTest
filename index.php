@@ -10,37 +10,6 @@ if(!empty($_REQUEST)){
  $fp = fopen('data.txt', 'a');
  fwrite($fp, $log);
  fclose($fp);
-
- $queryUrl = 'https://b24-iolu5k.bitrix24.com/rest/1/5u5y5za5ze1mvden/crm.deal.get.json';
- $queryData = "id=$log";
-
- $curl = curl_init();
- curl_setopt_array($curl, array(
- CURLOPT_SSL_VERIFYPEER => 0,
- CURLOPT_POST => 1,
- CURLOPT_HEADER => 0,
- CURLOPT_RETURNTRANSFER => 1,
- CURLOPT_URL => $queryUrl,
- CURLOPT_POSTFIELDS => $queryData,
- ));
-
- $result = curl_exec($curl);
- curl_close($curl);
-
- $result = json_decode($result);
-
- $fp = fopen('data.txt', 'a');
- fwrite($fp, $result->result->TITLE);
- fclose($fp);
-
- $post = [
-    'title' => $result->result->TITLE
-];
-
-$ch = curl_init('https://192.168.157.132/bitrixOdooMiddleware/');
-curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-curl_exec($ch);
-curl_close($ch);
 }
 
 ?>
